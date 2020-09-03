@@ -76,6 +76,8 @@ static void on_display(void){
               0, 0, 0,
               0, 1, 0);
 
+
+    //BEGIN drawing coordinate system
     glBegin(GL_LINES);
 
         glColor3f(1, 0, 0);
@@ -99,6 +101,7 @@ static void on_display(void){
         glVertex3f(0, 0, -100);
 
     glEnd();
+    //END drawing coordinate system
 
   
 
