@@ -85,7 +85,7 @@ static void on_display(void){
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt((floorWidth*floorScaleX)/2, (totalFloors*levelHeight)/2, 20,
+    gluLookAt((floorWidth*floorScaleX)/2, (totalFloors*levelHeight)*0.8 , 20,
               (floorWidth*floorScaleX)/2, (totalFloors*levelHeight)/2, 0,
               0, 1, 0);
 

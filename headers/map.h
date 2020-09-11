@@ -14,5 +14,4 @@ typedef struct Position{
 } Position;
 
 void drawMap(int mapWidth, int mapHeight);
-Position *getCoordinates(int x, int y);
 #endif

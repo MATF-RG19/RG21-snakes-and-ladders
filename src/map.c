@@ -4,7 +4,7 @@
 
 void drawMap(int mapWidth, int mapHeight){
     glPushMatrix();
-    glTranslatef(floorScaleX/2, floorScaleY/2, 0);
+    glTranslatef(floorScaleX/2, floorScaleY + floorScaleY/2, 0);
     for (int i=0; i<mapWidth; i++){
         glPushMatrix();
 
@@ -27,10 +27,3 @@ void drawMap(int mapWidth, int mapHeight){
     glPopMatrix();
 }
 
-Position *getCoordinates(int x, int y){
-    Position *position;
-    position = (Position *) malloc(sizeof(Position));
-    position->x = x;
-    position->y = y;
-    return position;
-}
