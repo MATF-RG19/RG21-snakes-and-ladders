@@ -5,6 +5,7 @@
 #include "../headers/globals.h"
 #include "../headers/coordinateSystem.h"
 #include "../headers/map.h"
+#include "../headers/skybox.h"
 
 //stanje tajmera
 static int timer_active;
@@ -89,7 +90,7 @@ static void on_display(void){
 
     //draw map
     drawMap(floorWidth, totalFloors);
-
+    drawSkybox(floorScaleZ);
     
     glutSwapBuffers();
 }
