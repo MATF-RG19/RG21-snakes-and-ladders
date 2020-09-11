@@ -36,8 +36,9 @@ int main(int argc, char **argv){
     glutMouseFunc(on_mouse);
     glutReshapeFunc(on_reshape);
     glutDisplayFunc(on_display);
+    glutTimerFunc(20, on_timer, 0);
 
-    timer_active = 0;
+    timer_active = 1;
 
     glClearColor(1, 1, 1, 0);
     glEnable(GL_DEPTH_TEST);
@@ -64,11 +65,13 @@ static void on_timer(int value){
     if(value != 0)
         return;
 
+    currentFrame++;
+
     //ponovno iscrtavanje prozora
     glutPostRedisplay();
 
     if(timer_active)
-        glutTimerFunc(50, on_timer, 0);
+        glutTimerFunc(20, on_timer, 0);
 }
 
 static void on_reshape(int width, int height){
@@ -95,7 +98,8 @@ static void on_display(void){
               0, 1, 0);
 
     init_light();
-    set_materials();
+    // set_materials();
+
     if (DEBUG_MODE){
         drawCoordinateSystem();
     }   
@@ -103,6 +107,7 @@ static void on_display(void){
 
     
     drawSkybox();
+    glTranslatef(floorScaleX/2, floorScaleY + floorScaleY/2, 0);
     drawMap(floorWidth, totalFloors);
     
     

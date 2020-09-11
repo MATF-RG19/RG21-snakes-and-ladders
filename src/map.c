@@ -18,8 +18,6 @@ void drawMap(int mapWidth, int mapHeight){
     glMaterialfv(GL_FRONT, GL_SPECULAR, specular_coeffs);
     glMaterialf(GL_FRONT, GL_SHININESS, shininess);
 
-
-    glTranslatef(floorScaleX/2, floorScaleY + floorScaleY/2, 0);
     for (int i=0; i<mapWidth; i++){
         glPushMatrix();
 

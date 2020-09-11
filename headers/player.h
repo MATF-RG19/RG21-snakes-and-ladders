@@ -8,6 +8,11 @@ typedef struct Player{
     int positionX;
     int positionY;
     char name[10];
+    int state; //0 = IDLE, 1 = MOVE
+    float coordinateX;
+    float coordinateY;
+    float velocityX;
+    float velocityY;
 } Player;
 
 Player *createPlayer(GLfloat color[3], char name[10]);
