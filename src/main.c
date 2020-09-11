@@ -6,11 +6,8 @@
 #include "../headers/globals.h"
 #include "../headers/coordinateSystem.h"
 #include "../headers/map.h"
-<<<<<<< HEAD
 #include "../headers/skybox.h"
-=======
 #include "../headers/player.h"
->>>>>>> 0101bc6f184613073c0d6869b9a8f3098d2ef1bb
 
 //stanje tajmera
 static int timer_active;
