@@ -2,11 +2,13 @@
 #include <math.h>
 #include <GL/glut.h>
 
+#include "../headers/globals.h"
 #include "../headers/coordinateSystem.h"
 #include "../headers/map.h"
 
 //stanje tajmera
 static int timer_active;
+
 
 //deklaracije callback funkcija
 
@@ -15,14 +17,13 @@ static void on_timer(int value);
 static void on_reshape(int width, int height);
 static void on_display(void);
 
-int appWindowWidth;
 
 int main(int argc, char **argv){
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE);
+    initGlobals();
 
-    appWindowWidth = glutGet(GLUT_SCREEN_HEIGHT)/1.25;
     glutInitWindowSize(appWindowWidth, appWindowWidth);
     glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH)-appWindowWidth)/2, (glutGet(GLUT_SCREEN_HEIGHT)-appWindowWidth)/2);
     glutCreateWindow(argv[0]);
@@ -76,20 +77,19 @@ static void on_display(void){
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    int floorWidth = 10;
-    int totalFloors = 10;
-
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     gluLookAt((floorWidth*floorScaleX)/2, (totalFloors*levelHeight)/2, 30,
               (floorWidth*floorScaleX)/2, (totalFloors*levelHeight)/2, 0,
               0, 1, 0);
 
-    drawCoordinateSystem();
-        
+    if (DEBUG_MODE){
+        drawCoordinateSystem();
+    }        
 
     //draw map
     drawMap(floorWidth, totalFloors);
+
     
     glutSwapBuffers();
 }
