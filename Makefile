@@ -3,7 +3,7 @@ CC      = gcc
 GDB		= -ggdb
 CFLAGS  = -g -std=c99 -Wall -I/usr/X11R6/include -I/usr/pkg/include
 LDFLAGS = -L/usr/X11R6/lib -L/usr/pkg/lib
-LDLIBS  = -lglfw -lglut -lGLU -lGL -lm
+LDLIBS  = -lglut -lGLU -lGL -lm
 
 C_FILES= $(wildcard src/*.c)
 OBJ_FILES= $(addprefix obj/,$(notdir $(C_FILES:.c=.o)))
