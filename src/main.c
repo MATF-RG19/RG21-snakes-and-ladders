@@ -8,6 +8,9 @@
 #include "../headers/map.h"
 #include "../headers/skybox.h"
 #include "../headers/player.h"
+#include "../headers/lights.h"
+
+
 
 //stanje tajmera
 static int timer_active;
@@ -83,18 +86,25 @@ static void on_display(void){
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    
+
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     gluLookAt((floorWidth*floorScaleX)/2, (totalFloors*levelHeight)*0.8 , 20,
               (floorWidth*floorScaleX)/2, (totalFloors*levelHeight)/2, 0,
               0, 1, 0);
 
+    init_light();
+    set_materials();
     if (DEBUG_MODE){
         drawCoordinateSystem();
-    }        
+    }   
 
+
+    
+    drawSkybox();
     drawMap(floorWidth, totalFloors);
-    drawSkybox(floorScaleZ);
+    
     
     drawPlayer(player1);
     drawPlayer(player2);

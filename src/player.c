@@ -17,6 +17,23 @@ void drawPlayer(Player *player){
 
     glTranslatef(x, y, 0);
     glColor3f(player->color[0], player->color[1], player->color[2]);
+
+    GLfloat ambient_coeffs[] = { 1.0, 0.1, 0.1, 1 };
+
+    /* Koeficijenti difuzne refleksije materijala. */
+    GLfloat diffuse_coeffs[] = { player->color[0], player->color[1], player->color[2], 1 };
+
+    /* Koeficijenti spekularne refleksi je materijala. */
+    GLfloat specular_coeffs[] = { 0.5, 0.5, 0.5, 0.5};
+
+    /* Koeficijent glatkosti materijala. */
+    GLfloat shininess = 20;
+
+    glMaterialfv(GL_FRONT, GL_AMBIENT, ambient_coeffs);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse_coeffs);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, specular_coeffs);
+    glMaterialf(GL_FRONT, GL_SHININESS, shininess);
+
     glutSolidSphere(levelHeight*0.7 / 2, 50, 50);
 
     glPopMatrix();
