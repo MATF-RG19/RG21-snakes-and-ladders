@@ -8,6 +8,11 @@
 #define floorScaleZ 2.0
 #define levelHeight 1.2
 
+typedef struct Position{
+    int x;
+    int y;
+} Position;
+
 void drawMap(int mapWidth, int mapHeight);
-    
+Position *getCoordinates(int x, int y);
 #endif

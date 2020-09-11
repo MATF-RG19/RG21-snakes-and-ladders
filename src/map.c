@@ -26,3 +26,11 @@ void drawMap(int mapWidth, int mapHeight){
     }
     glPopMatrix();
 }
+
+Position *getCoordinates(int x, int y){
+    Position *position;
+    position = (Position *) malloc(sizeof(Position));
+    position->x = x;
+    position->y = y;
+    return position;
+}

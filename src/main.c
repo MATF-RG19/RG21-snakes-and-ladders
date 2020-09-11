@@ -1,23 +1,26 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <math.h>
 #include <GL/glut.h>
 
 #include "../headers/globals.h"
 #include "../headers/coordinateSystem.h"
 #include "../headers/map.h"
+<<<<<<< HEAD
 #include "../headers/skybox.h"
+=======
+#include "../headers/player.h"
+>>>>>>> 0101bc6f184613073c0d6869b9a8f3098d2ef1bb
 
 //stanje tajmera
 static int timer_active;
 
-
 //deklaracije callback funkcija
-
 static void on_keyboard(unsigned char key, int x, int y);
+static void on_mouse(int button, int state, int x, int y);
 static void on_timer(int value);
 static void on_reshape(int width, int height);
 static void on_display(void);
-
 
 int main(int argc, char **argv){
 
@@ -30,6 +33,7 @@ int main(int argc, char **argv){
     glutCreateWindow(argv[0]);
 
     glutKeyboardFunc(on_keyboard);
+    glutMouseFunc(on_mouse);
     glutReshapeFunc(on_reshape);
     glutDisplayFunc(on_display);
 
@@ -49,6 +53,10 @@ static void on_keyboard(unsigned char key, int x, int y){
             exit(0);
             break;
     }
+}
+static void on_mouse(int button, int state, int x, int y){
+    printf("%d", button);
+    printf("%d", state);
 }
 
 static void on_timer(int value){
@@ -80,7 +88,7 @@ static void on_display(void){
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt((floorWidth*floorScaleX)/2, (totalFloors*levelHeight)/2, 30,
+    gluLookAt((floorWidth*floorScaleX)/2, (totalFloors*levelHeight)/2, 20,
               (floorWidth*floorScaleX)/2, (totalFloors*levelHeight)/2, 0,
               0, 1, 0);
 
@@ -88,10 +96,15 @@ static void on_display(void){
         drawCoordinateSystem();
     }        
 
-    //draw map
     drawMap(floorWidth, totalFloors);
     drawSkybox(floorScaleZ);
     
+    drawPlayer(player1);
+    drawPlayer(player2);
+    drawPlayer(player3);
+    drawPlayer(player4);
+    drawPlayerNames();        
+
     glutSwapBuffers();
 }
 
