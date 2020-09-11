@@ -4,7 +4,6 @@
 
 void drawMap(int mapWidth, int mapHeight){
     glPushMatrix();
-    glTranslatef(floorScaleX/2, floorScaleY + floorScaleY/2, 0);
     for (int i=0; i<mapWidth; i++){
         glPushMatrix();
 
