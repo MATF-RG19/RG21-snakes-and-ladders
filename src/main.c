@@ -6,7 +6,11 @@
 #include "../headers/globals.h"
 #include "../headers/coordinateSystem.h"
 #include "../headers/map.h"
+<<<<<<< HEAD
+#include "../headers/skybox.h"
+=======
 #include "../headers/player.h"
+>>>>>>> 0101bc6f184613073c0d6869b9a8f3098d2ef1bb
 
 //stanje tajmera
 static int timer_active;
@@ -93,14 +97,13 @@ static void on_display(void){
     }        
 
     drawMap(floorWidth, totalFloors);
+    drawSkybox(floorScaleZ);
     
     drawPlayer(player1);
     drawPlayer(player2);
     drawPlayer(player3);
     drawPlayer(player4);
-    drawPlayerNames();    
-
-    
+    drawPlayerNames();        
 
     glutSwapBuffers();
 }
