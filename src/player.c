@@ -1,6 +1,7 @@
 #include "../headers/player.h"
 #include "../headers/globals.h"
 #include "../headers/map.h"
+#include "../headers/lights.h"
 #include <string.h>
 
 void drawPlayerName(Player *player);
@@ -13,22 +14,9 @@ float maxIdleAnimationY = levelHeight*0.1;
 void drawPlayer(Player *player){
     glPushMatrix();
     
-    GLfloat ambient_coeffs[] = { 1.0, 0.1, 0.1, 1 };
-
-    /* Koeficijenti difuzne refleksije materijala. */
-    GLfloat diffuse_coeffs[] = { player->color[0], player->color[1], player->color[2], 1 };
-
-    /* Koeficijenti spekularne refleksi je materijala. */
-    GLfloat specular_coeffs[] = { 0.5, 0.5, 0.5, 0.5};
-
-    /* Koeficijent glatkosti materijala. */
-    GLfloat shininess = 20;
-
-    glMaterialfv(GL_FRONT, GL_AMBIENT, ambient_coeffs);
+    GLfloat diffuse_coeffs[] = {player->color[0], player->color[1], player->color[2], 1 };
     glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse_coeffs);
-    glMaterialfv(GL_FRONT, GL_SPECULAR, specular_coeffs);
-    glMaterialf(GL_FRONT, GL_SHININESS, shininess);
-
+    set_player_materials();
     float x = (float)player->positionX;
     x = x * floorScaleX ;
 
@@ -48,6 +36,7 @@ void drawPlayer(Player *player){
     if (player->state == 0){
         animateIdle(player, y);
     }
+
     glTranslatef(player->coordinateX, player->coordinateY, 0);
     glColor3f( player->color[0], player->color[1], player->color[2]);
     glutSolidSphere( playerHeight / 2, 50, 50);

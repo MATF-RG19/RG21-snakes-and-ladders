@@ -30,18 +30,20 @@ int main(int argc, char **argv){
 
     glutInitWindowSize(appWindowWidth, appWindowWidth);
     glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH)-appWindowWidth)/2, (glutGet(GLUT_SCREEN_HEIGHT)-appWindowWidth)/2);
-    glutCreateWindow(argv[0]);
+    glutCreateWindow("Snakes n Ladders");
+    glClearColor(1, 0, 0, 0);
 
+    glEnable(GL_DEPTH_TEST);
+
+    init_light();
+
+    glutDisplayFunc(on_display);
+    glutReshapeFunc(on_reshape);
     glutKeyboardFunc(on_keyboard);
     glutMouseFunc(on_mouse);
-    glutReshapeFunc(on_reshape);
-    glutDisplayFunc(on_display);
+    timer_active = 1;
     glutTimerFunc(20, on_timer, 0);
 
-    timer_active = 1;
-
-    glClearColor(1, 1, 1, 0);
-    glEnable(GL_DEPTH_TEST);
 
     glutMainLoop();
 
@@ -97,8 +99,6 @@ static void on_display(void){
               (floorWidth*floorScaleX)/2, (totalFloors*levelHeight)/2, 0,
               0, 1, 0);
 
-    init_light();
-    // set_materials();
 
     if (DEBUG_MODE){
         drawCoordinateSystem();

@@ -2,6 +2,7 @@
 #define _PLAYER_H_
 
 #include <GL/glut.h>
+#include "../headers/player.h"
 
 typedef struct Player{
     GLfloat color[3];

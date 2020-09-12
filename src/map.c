@@ -1,22 +1,12 @@
 #include "../headers/map.h"
 #include "../headers/globals.h"
-
+#include "../headers/lights.h"
 
 void drawMap(int mapWidth, int mapHeight){
     glPushMatrix();
 
-    GLfloat ambient_coeffs[] = { 0.2295f, 0.08825f, 0.0275f, 1.0f };
 
-    /* Koeficijenti difuzne refleksije materijala. */
-    GLfloat diffuse_coeffs[] = {0.5508f, 0.2118f, 0.066f, 1.0f };
-    
-    GLfloat specular_coeffs[] = { 0.580594f, 0.223257f, 0.0695701f, 1.0f };
-
-    GLfloat shininess = 51.2f;
-    glMaterialfv(GL_FRONT, GL_AMBIENT, ambient_coeffs);
-    glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse_coeffs);
-    glMaterialfv(GL_FRONT, GL_SPECULAR, specular_coeffs);
-    glMaterialf(GL_FRONT, GL_SHININESS, shininess);
+    set_map_materials();
 
     for (int i=0; i<mapWidth; i++){
         glPushMatrix();
