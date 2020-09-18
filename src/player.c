@@ -31,7 +31,7 @@ void drawPlayer(Player *player){
         player->coordinateX = x;
     }
 
-    player->coordinateX += player->velocityX;
+    
 
     if (player->state == 0){
         animateIdle(player, y);

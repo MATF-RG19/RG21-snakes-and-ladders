@@ -117,6 +117,9 @@ static void on_display(void){
     drawPlayer(player4);
     drawPlayerNames();        
 
+    drawEdges();
+
+    
     glutSwapBuffers();
 }
 

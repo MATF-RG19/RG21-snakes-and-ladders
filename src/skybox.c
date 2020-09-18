@@ -21,7 +21,7 @@ void drawSkybox(){
             glMaterialf(GL_FRONT, GL_SHININESS, shininess_wall);
             glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse_coeffs_wall);
             glTranslatef(5, 8, -3);
-            glScalef(20, 20, 1);
+            glScalef(100, 20, 1);
             glutSolidCube(1);
         glPopMatrix();
 
@@ -30,7 +30,7 @@ void drawSkybox(){
              glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse_coeffs_floor);
             glTranslatef(5, -5, -3);
             glRotatef(90,1,0, 0);
-            glScalef(30, 20, 1);
+            glScalef(100, 20, 1);
             glutSolidCube(1);
         glPopMatrix();
 
